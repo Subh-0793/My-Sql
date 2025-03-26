@@ -1,0 +1,57 @@
+1. How to retrieve the second-highest salary of an employee? 
+
+  
+SELECT MAX(salary)  
+FROM employees  
+WHERE salary < (SELECT MAX(salary) FROM employees); 
+
+2. How to get the nth highest salary in   ? 
+
+create database Megh9;
+use Megh9
+
+create table emp (
+emp_id int primary key ,
+emp_name varchar(50),
+dept varchar(50),
+sal float);
+
+select * from emp
+insert into emp values
+( 101,'Aakash','Mech',100),
+(102, 'Bakash','Ece',200),
+( 103,'Cakash','Mech',300),
+( 104,'Dakash','IT',400),
+( 105,'Fakash','HR',500);
+
+
+select * from 
+(select *, dense_rank() over (order by sal desc) as rnk
+from emp
+) as t
+where rnk=3;------3rd highest salary
+
+103	Cakash	Mech	300	3
+
+3. How do you fetch all employees whose salary is greater than the average 
+salary? 
+
+SELECT *  
+FROM employees  
+WHERE salary > (SELECT AVG(salary) FROM employees); 
+
+4. Write a query to display the current date and time in  mysql . 
+SELECT CURRENT_TIMESTAMP; 
+2025-03-26 21:32:06
+
+5. How can you delete duplicate rows in   ? 
+   
+  
+WITH CTE AS ( 
+   SELECT column_name,  
+          ROW_NUMBER() OVER (PARTITION BY column_name ORDER BY 
+column_name) AS row_num 
+   FROM table_name 
+) 
+
+
