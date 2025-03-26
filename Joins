@@ -1,0 +1,49 @@
+Full Join two tables
+create database Megh9
+use Megh9;
+ create table cutomer (
+           cust_id int primary key,
+           cust_name varchar(50),
+           add_id int 
+                      );
+
+ alter table cutomer
+ rename to customer;
+ insert into customer values
+         (1,'marry',5),
+         (2,'madan',6),
+         (3,'linda',7),
+         (4,'barbar',8);
+
+select * from customer
+select * from payment
+
+create table payment(
+          cust_id int,
+          amount float,
+          mode varchar(50)
+          );
+
+
+ insert into payment values
+           (1,50,'cash'),
+           (3,100,'credit'),
+           (5,150,'UPI');
+
+select * from
+customer as c 
+left  join payment as p
+on c.cust_id = p. cust_id
+union
+select * from
+customer as c 
+right  join payment as p
+on c.cust_id = p. cust_id
+
+output
+1	marry	5	1	50	cash
+2	madan	6			
+3	linda	7	3	100	credit
+4	barbar	8			
+5	subhash	9	5	150	UPI
+
